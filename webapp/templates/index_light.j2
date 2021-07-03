@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Tongue</title>
+
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <!-- CSS only -->
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">-->
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <style type="text/css">
+        * {
+            box-sizing: border-box; /*すべての要素に対してpaddingとborderを幅と高さに含める*/
+        }
+
+        body {
+            margin: 0;
+            font-family: "Hiragino Kaku Gothic ProN", sans-serif; /*全体のフォント指定*/
+            background-color: #fffde1; /*ベースカラー*/
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .clear {
+            clear: left;
+        }
+
+        .container {
+            max-width: 1500px; /*basic:1170px*/
+            width: 100%;
+            padding: 0 15px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .top-wrapper {  /*title & 説明文パート*/
+            padding: 180px 0 100px 0;
+            background-color: rgba(20, 20, 20, 0.9);
+            background-size: cover;
+            color: white; /*背景色によって最前面の文字のカラーを変更する*/
+            text-align: center;
+        }
+
+        .top-wrapper h1 { /*タイトル文字*/
+            opacity: 0.7; /*若干色を透明に*/
+            font-size: 45px;
+            letter-spacing: 5px;
+            font-size: 100px;
+        }
+
+        .top-wrapper p { /*タイトル下の説明文*/
+            opacity: 0.7;/*若干色を透明に*/
+            font-size: 20px;
+        }
+
+        .btn-wrapper { /*一番下のSNSに飛べるリンク全体の設定*/
+            text-align: center;
+            display: inline-block;
+            margin: 20px 0; /*?????????????????????????????????????????????????????????????????????????????????????????????????????*/
+        }
+
+        .instagram{/*ボタンの下地*/
+            position: relative;
+            background: -webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+            background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;/*グラデーション①*/
+            overflow: hidden;/*はみ出た部分を隠す*/
+            text-decoration:none;/*下線は消す*/
+        }
+
+        .instagram:before{/*グラデーション②*/
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;/*全体を覆う*/
+            height: 100%;/*全体を覆う*/
+            background: -webkit-linear-gradient(15deg, #ffdb2c, rgb(249, 118, 76) 25%, rgba(255, 77, 64, 0) 50%) no-repeat;
+            background: linear-gradient(15deg, #ffdb2c, rgb(249, 118, 76) 25%, rgba(255, 77, 64, 0) 50%) no-repeat;
+        }
+
+        .instagram .fa-instagram{/*アイコン*/
+            position: relative;
+        }
+
+        .instagram span {/*テキスト*/
+            display:inline-block;
+            position: relative;
+            transition: .5s
+        }
+
+        .facebook {
+            background-color: #3b5998;
+        }
+
+        .twitter {
+            background-color: #55acee;
+        }
+
+        .btn { /*ボタン全体の設定*/
+            padding: 10px 24px; /*文字とボックスの間隔を整える*/
+            color: white;
+            opacity: 0.8;
+            border-radius: 4px; /*ボックスの角を丸める度合い*/
+            text-align: center;
+            margin: 0px 15px; /*ボタンごとの左右の間隔調整*/
+            font-size: 18px;
+        }
+
+        .btn:hover { /*マウスカーソルが来た時にボックスの色を濃くする*/
+            opacity: 1;
+        }
+
+        .fab { /*SNSのアイコンと文字の間隔*/
+            margin-right: 7px;
+        }
+
+        header { /*ヘッダーの設定*/
+            height: 65px;
+            width: 100%;
+            background-color: rgba(20, 20, 20, 0.8);
+            position :fixed;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo { /*ヘッダーのロゴのサイズ設定*/
+            width: 140px;
+            margin-top: 5px;
+        }
+
+        .header-left { /*ヘッダーのロゴを左寄せにする*/
+            float: left;
+        }
+
+        .header-right { /*ログインなどのボタンは右寄せにする*/
+            float: right;
+            margin-right: -25px;
+            font-size:18px;
+            display: block;
+        }
+
+        .header-right a { /*ヘッダーの右のボタンの設定*/
+            line-height: 65px;
+            padding: 0 25px;
+            color: #d6b845;
+            display: block;
+            float: left;
+            transition: all 0.5s;
+        }
+
+        .header-right a:hover { /*ヘッダーの右のボタンへマウスカーソルを移動させたときの処理*/
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .header-btn{
+            font-size: 24px;
+        }
+        /* menu-iconのCSS */
+        .menu-icon {
+            display:none;
+        }
+
+        .heading { /*アップロード，変換後の説明文*/
+            padding-top: 80px;
+            padding-bottom: 50px;
+            color: #5f5d60;
+        }
+
+        .heading h2 { /*文字の太さを通常サイズにする*/
+            font-weight: normal;
+        }
+
+        .heading h3 { /*文字の太さを通常サイズにする*/
+            font-weight: normal;
+        }
+
+        .second-wrapper { /*upload, change部の処理*/
+            margin-top: 100px;
+            padding-bottom: 50px;
+        }
+
+        footer img { /*フッターの画像サイズ*/
+            width: 120px;
+        }
+
+        footer p {/*フッターの文字*/
+            color: rgba(20, 20, 20,0.7);
+            font-size: 12px;
+        }
+
+        footer {/*フッター全体の設定*/
+            border-top: 1px solid rgb(100, 100, 100);
+            padding-top: 30px;
+            padding-bottom: 20px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {/*フッターの画像と文字の設定*/
+            max-width: 1500px;
+            width: 100%;
+            padding: 0 15px;
+            margin: 0 auto;
+            text-align: right;
+        }
+
+        .upload, .change{
+            display: inline-block;
+        }
+
+        .upload-label, .change_images { /*uploadとchangeのボタンの設定*/
+            display: inline-block;
+            cursor: pointer; /* カーソルを指に */
+            margin: 0 0; /* まわりの余白 */
+            padding: .7em 1em; /* 文字まわりの余白 */
+            line-height: 1.4; /* 行間 */
+            background: rgba(20, 20, 20,0.7); /* 背景色 */
+            color: #d6b845; /* 文字色 */
+            border-radius: 7px; /* 角の丸み */
+            transition: 0.2s; /* ホバーをなめらかに */
+            font-size: 24px;
+        }
+        /* ホバー時 */
+        .upload-label:hover { /*uploadとchangeのボタン上にカーソルが来た時の処理*/
+            box-shadow: 0 8px 10px -2px rgba(0, 0, 0, 0.2); /* 影を表示 */
+        }
+        .change_images:hover {
+            box-shadow: 0 8px 10px -2px rgba(0, 0, 0, 0.2); /* 影を表示 */
+        }
+
+        /* inputは隠す */
+        .upload-label input {
+            display: none;
+        }
+        .change_images input {
+            display: none;
+        }
+
+        form h1{
+            margin-bottom: 0;
+        }
+
+        .file_name {
+        position: relative;
+        margin: 1.5em 0;
+        padding: 7px 10px;
+        min-width: 120px;
+        max-width: 100%;
+        color: #555;
+        font-size: 20px;
+        background: #FFF;
+        border: solid 2px #555;
+        border-radius: 7px;
+        box-sizing: border-box;
+        }
+
+        .file_name:before {
+        content: "";
+        position: absolute;
+        top: -24px;
+        left: 50%;
+        margin-left: -15px;
+        border: 12px solid transparent;
+        border-bottom: 12px solid #FFF;
+        z-index: 2;
+        }
+
+        .file_name:after {
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        margin-left: -17px;
+        border: 14px solid transparent;
+        border-bottom: 14px solid #555;
+        z-index: 1;
+        }
+
+        .file_name p {
+        margin: 0;
+        padding: 0;
+        }
+
+        .title{
+        color: #b32425;
+        }
+
+        .drawer{
+        display: none;
+        }
+
+        .top-wrapper h2{
+        opacity: 0.7;
+        padding:200px auto;
+        text-align: center;
+        }
+
+        .third-wrapper a{
+        text-align:center;
+        }
+
+        .progress{
+        font-size: 24px;
+        width:100%;
+        text-align: center;
+        color:rgba(20, 20, 20, 0.8);
+        }
+
+        .fa-paw{
+        font-size: 36px;
+        color: #d6b845;
+        margin-right: 10px;
+        }
+
+        .right_icon{
+        display: inline-block;
+        font-size:42px;
+        color: #d6b845;
+        margin: 0px 10px;
+        }
+
+        .down_icon{
+        display: none;
+        }
+
+        .bottom{
+        padding-bottom: 50px;
+        }
+
+
+
+        /* 画像2枚横並べが厳しくなる時の処理 */
+        @media all and (max-width: 1250px){
+            .top-wrapper h1 {
+                font-size: 70px;
+            }
+
+            .image_post {
+                width: 100%;
+                text-align: center;
+                vertical-align: middle;
+            }
+
+            .image_text .dl_text {
+                text-align: center;
+                vertical-align: middle;
+                margin: 0px;
+                display: block;
+                width: 100%;
+            }
+
+            .image_text span{
+                display: none;
+            }
+
+            .download {
+                margin-right: 250px;
+                font-size: 20px;
+            }
+
+            .before_after_text{
+                display: none;
+            }
+
+            .heading{
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+            .second-wrapper{
+                margin-bottom: 10px;
+            }
+
+            .right_icon{
+                display: none;
+            }
+
+            .down_icon{
+                display: block;
+                font-size:42px;
+                color: #d6b845;
+                margin: 10px 0px;
+            }
+        }
+
+        /* タブレット向けレイアウト */
+        @media all and (max-width: 960px) {
+            .top-wrapper {
+                width: 100%;
+            }
+
+            .top-wrapper h1 {
+            font-size: 32px;
+            }
+            .top-wrapper p{
+                font-size: 18px;
+            }
+            .footer-logo {
+                text-align: center;
+                vertical-align: middle;
+            }
+
+            .download{
+                font-size: 18px;
+            }
+
+            .image_text .dl_text {
+                font-size: 20px;
+            }
+
+
+        }
+        
+        /* スマホ向けレイアウト */
+        @media all and (max-width: 750px) {
+            .top-wrapper h1 {
+            font-size: 28px;
+            }
+        
+            .top-wrapper p {
+            font-size: 16px;
+            }
+
+            .heading h2 {
+                font-size: 20px;
+            }
+
+            .twitter {
+                margin: 10px 0px 0px 0px;
+            }
+
+            .facebook {
+                margin: 20px 0px;
+            }
+
+            .instagram {
+                margin: 0px 0px 20px 0px;
+            }
+
+            .btn {
+                display: block;
+                padding: 10px 50px;
+            }
+
+            .btn-wrapper {
+                width: 100%;
+            }
+
+            /* ハンバーガーメニューの表示  */
+            .menu-icon {
+                display: block;
+                color: #d6b845;
+                float: right;
+                font-size: 28px;
+                padding: 21px 10px;
+            }
+            /* header-rightを消す */
+            .header-right {
+                display: none;
+            }
+
+            .drawer {
+                display: block;
+            }
+
+            .drawer-hidden {
+                display: none;
+            }
+            /* ハンバーガーアイコンの設置スペース */
+            .drawer-open {
+                display: flex;
+                height: 60px;
+                width: 60px;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                z-index: 100; /* 重なり順を一番上に */
+                cursor: pointer;
+                float: right;
+            }
+
+            /* ハンバーガーメニューのアイコン */
+            .drawer-open span, .drawer-open span:before, .drawer-open span:after {
+                content: '';
+                display: block;
+                height: 3px;
+                width: 28px;
+                border-radius: 3px;
+                transition: 0.5s;
+                position: absolute;
+                background-color: #d6b845;
+            }
+
+            /* 三本線のうち一番上の棒の位置調整 */
+            .drawer-open span:before {
+                bottom: 8px;
+            }
+
+            /* 三本線のうち一番下の棒の位置調整 */
+            .drawer-open span:after {
+                top: 8px;
+            }
+
+            /* アイコンがクリックされたら真ん中の線を透明にする */
+            #drawer-check:checked ~ .drawer-open span {
+                background: rgba(255, 255, 255, 0);
+            }
+
+            /* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
+            #drawer-check:checked ~ .drawer-open span::before {
+                bottom: 0;
+                transform: rotate(45deg);
+            }
+
+            #drawer-check:checked ~ .drawer-open span::after {
+                top: 0;
+                transform: rotate(-45deg);
+            }
+
+            /* メニューのデザイン*/
+            .drawer-content {
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                top: 0;
+                left: 100%; /* メニューを画面の外に飛ばす */
+                z-index: 99;
+                transition: .5s;
+                color: #d6b845;
+                background-color: #fffde1;
+            }
+
+            /* アイコンがクリックされたらメニューを表示 */
+            #drawer-check:checked ~ .drawer-content {
+                left: 0; /* メニューを画面に入れる */
+            }
+            .drawer-item a{
+                color: #d6b845;
+                font-size: 20px;
+            }
+
+        }
+    </style>
+  
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-left">
+            <img class="logo" src="/static/image/header_logo1.png">
+        </div>
+        <!-- スマートフォン用のメニューアイコン -->
+        <div class="drawer">
+          <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
+          <input type="checkbox" id="drawer-check" class="drawer-hidden" >
+
+          <!-- ハンバーガーアイコン -->
+          <label for="drawer-check" class="drawer-open"><span></span></label>
+
+          <nav class="drawer-content">
+            <ul class="drawer-list">
+              <li class="drawer-item">
+                <a href="https://ja-jp.facebook.com/login/web/">Facebook</a>
+              </li><!-- /.drawer-item -->
+              <li class="drawer-item">
+                <a href="https://twitter.com/login/">Twitter</a>
+              </li><!-- /.drawer-item -->
+              <li class="drawer-item">
+                <a href="https://www.instagram.com/accounts/login/">Instagram</a>
+              </li><!-- /.drawer-item -->
+              <li class="drawer-item">
+                <!-- <a href="#">Sign Up</a> -->
+              </li><!-- /.drawer-item -->
+              <li class="drawer-item">
+                <!-- <a href="#" class="login">Sign In</a> -->
+              </li><!-- /.drawer-item -->
+            </ul><!-- /.drawer-list -->
+          </nav>
+        </div>
+
+         <div class="header-right">
+            <a href="https://ja-jp.facebook.com/login/web/" class="header-btn"><span class="fab fa-facebook"></span></a>
+            <a href="https://twitter.com/login/" class="header-btn"><span class="fab fa-twitter"></span></a>
+            <a href="https://www.instagram.com/accounts/login/" class="header-btn"><span class="fab fa-instagram"></span></a>
+            <!-- <a href="#">Sign Up</a> -->
+            <!-- <a href="#" class="login">Sign In</a> -->
+          </div>
+      </div>
+    </header>
+
+    <div class="top-wrapper">
+      <div class="container">
+        <h1><span class="title">i</span>llus<span class="title">t</span>ection</h1>
+        <p>キャット・タンが開発したwebアプリです．</p>
+        <p>画像の人物などを ”いらすとや” に置き換えることができます．</p>
+        <p>さっそくファイルをアップロードして画像を変換してみましょう！</p>
+      </div>
+    </div>
+
+    <div class="second-wrapper">
+      <div class="container">
+        <i class="fas fa-paw"></i>
+        <h1 class="upload">Upload Files</h1>
+        <form action="/upload_file" method="POST" enctype="multipart/form-data">
+          <label class="upload-label">
+            Choose Files
+            <input id="file" type="file" name="file" multiple="" accept="image/jpeg,image/png" />
+          </label>
+          <div class="file_name">
+            <script> <!-- index.js埋め込み -->
+                const fileElem = document.getElementById("file");
+
+                fileElem.addEventListener('change', (event) => {
+                    const files = event.target.files;
+                    const filenames = [];
+                    for (let i = 0; i < files.length; ++i) {
+                        filenames.push(files.item(i).name);
+                    }
+                    const new_message = filenames.map(name => {
+                        return name.replace(/&/g, '&amp;')
+                                .replace(/</g, '&lt;')
+                                .replace(/>/g, '&gt;')
+                                .replace(/"/g, '&quot;')
+                                .replace(/'/g, '&#39;');
+                    }).join("\n");
+                    console.log(new_message);
+
+                    document.getElementById("message").innerText = new_message;
+                })
+
+            </script>
+             <p id="message">{{message}}</p>
+          </div>
+
+          <i class="fas fa-paw"></i>
+          <h1 class="change">Change Files</h1>
+          <p></p>
+          <label class="change_images">
+            Click here !
+            <input type="submit"/>
+          </label>
+        </form>
+      </div>
+    </div>
+
+    <div class="third-wrapper">
+      <div class="container">
+        <div class="heading">
+          <h2>変換した画像をSNSにアップロードしてみましょう！</h2>
+          <h3>Let's post images on SNS!</h3>
+        </div>
+        <div class="btn-wrapper">
+          <a href="https://ja-jp.facebook.com/login/web/" class="btn facebook"><span class="fab fa-facebook"></span>Facebook</a>
+          <a href="https://twitter.com/login/" class="btn twitter"><span class="fab fa-twitter"></span>Twitter</a>
+        </div>
+          <a href="https://www.instagram.com/accounts/login/" class="btn instagram">
+            <i class="fab fa-instagram"></i> <span>Instagram</span>
+          </a>
+
+    </div>
+    </div>
+    <footer>
+      <div class="footer-logo">
+        <img src="/static/image/header_logo1.png">
+        <p>Created by Cat Tongue</p>
+      </div>
+    </footer>
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script> -->
+  </body>
+</html>

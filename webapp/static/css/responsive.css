@@ -1,0 +1,134 @@
+/* 画像2枚横並べが厳しくなる時の処理 */
+@media all and (max-width: 1250px){
+    .top-wrapper h1 {
+        font-size: 70px;
+    }
+
+    .image_post {
+        width: 100%;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .image_text .dl_text {
+        text-align: center;
+        vertical-align: middle;
+        margin: 0px;
+        display: block;
+        width: 100%;
+    }
+
+    .image_text span{
+        display: none;
+    }
+
+    .download {
+        margin-right: 250px;
+        font-size: 20px;
+    }
+
+    .before_after_text{
+        display: none;
+    }
+
+    .heading{
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    .second-wrapper{
+        margin-bottom: 10px;
+    }
+
+    .right_icon{
+        display: none;
+      }
+
+      .down_icon{
+        display: block;
+        font-size:42px;
+        color: #d6b845;
+        margin: 10px 0px;
+      }
+}
+
+/* タブレット向けレイアウト */
+@media all and (max-width: 960px) {
+    .top-wrapper {
+        width: 100%;
+    }
+
+    .top-wrapper h1 {
+      font-size: 32px;
+    }
+    .top-wrapper p{
+        font-size: 18px;
+    }
+    .footer-logo {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .download{
+        font-size: 18px;
+    }
+
+    .image_text .dl_text {
+        font-size: 20px;
+    }
+
+
+  }
+  
+  /* スマホ向けレイアウト */
+  @media all and (max-width: 750px) {
+    .top-wrapper h1 {
+      font-size: 28px;
+    }
+  
+    .top-wrapper p {
+      font-size: 16px;
+    }
+
+    .heading h2 {
+        font-size: 20px;
+    }
+
+    .twitter {
+        margin: 10px 0px 0px 0px;
+    }
+
+    .facebook {
+        margin: 20px 0px;
+    }
+
+    .instagram {
+        margin: 0px 0px 20px 0px;
+    }
+
+    .btn {
+        display: block;
+        padding: 10px 50px;
+    }
+
+    .btn-wrapper {
+        width: 100%;
+    }
+  }
+
+@media all and (max-width: 520px) {
+    .img_uploads .img_results{
+        width:100%;
+    }
+}
+
+@media all and (max-width: 420px) {
+    .img_uploads .img_results{
+        width:300px;
+    }
+}
+
+@media all and (max-width: 320px) {
+    .img_uploads .img_results{
+        width:250px;
+    }
+}

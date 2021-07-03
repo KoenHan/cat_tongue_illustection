@@ -1,0 +1,375 @@
+* {
+    box-sizing: border-box; /*すべての要素に対してpaddingとborderを幅と高さに含める*/
+  }
+
+  body {
+    margin: 0;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif; /*全体のフォント指定*/
+    background-color: #fffde1; /*ベースカラー*/
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .clear {
+    clear: left;
+  }
+
+  .container {
+    max-width: 1500px; /*basic:1170px*/
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .top-wrapper {  /*title & 説明文パート*/
+    padding: 180px 0 100px 0;
+    background-color: rgba(20, 20, 20, 0.9);
+    background-size: cover;
+    color: white; /*背景色によって最前面の文字のカラーを変更する*/
+    text-align: center;
+  }
+
+  .top-wrapper h1 { /*タイトル文字*/
+    opacity: 0.7; /*若干色を透明に*/
+    font-size: 45px;
+    letter-spacing: 5px;
+    font-size: 100px;
+  }
+
+  .top-wrapper p { /*タイトル下の説明文*/
+    opacity: 0.7;/*若干色を透明に*/
+    font-size: 20px;
+  }
+
+  .btn-wrapper { /*一番下のSNSに飛べるリンク全体の設定*/
+    text-align: center;
+    display: inline-block;
+    margin: 20px 0; /*?????????????????????????????????????????????????????????????????????????????????????????????????????*/
+  }
+
+  .instagram{/*ボタンの下地*/
+    position: relative;
+    background: -webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+    background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;/*グラデーション①*/
+    overflow: hidden;/*はみ出た部分を隠す*/
+    text-decoration:none;/*下線は消す*/
+  }
+
+  .instagram:before{/*グラデーション②*/
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;/*全体を覆う*/
+    height: 100%;/*全体を覆う*/
+    background: -webkit-linear-gradient(15deg, #ffdb2c, rgb(249, 118, 76) 25%, rgba(255, 77, 64, 0) 50%) no-repeat;
+    background: linear-gradient(15deg, #ffdb2c, rgb(249, 118, 76) 25%, rgba(255, 77, 64, 0) 50%) no-repeat;
+  }
+
+  .instagram .fa-instagram{/*アイコン*/
+    position: relative;
+  }
+
+  .instagram span {/*テキスト*/
+    display:inline-block;
+    position: relative;
+    transition: .5s
+  }
+
+  .facebook {
+    background-color: #3b5998;
+  }
+
+  .twitter {
+    background-color: #55acee;
+  }
+
+  .btn { /*ボタン全体の設定*/
+    padding: 10px 24px; /*文字とボックスの間隔を整える*/
+    color: white;
+    opacity: 0.8;
+    border-radius: 4px; /*ボックスの角を丸める度合い*/
+    text-align: center;
+    margin: 0px 15px; /*ボタンごとの左右の間隔調整*/
+    font-size: 18px;
+  }
+
+  .btn:hover { /*マウスカーソルが来た時にボックスの色を濃くする*/
+    opacity: 1;
+  }
+
+  .fab { /*SNSのアイコンと文字の間隔*/
+    margin-right: 7px;
+  }
+
+  header { /*ヘッダーの設定*/
+    height: 65px;
+    width: 100%;
+    background-color: rgba(20, 20, 20, 0.8);
+    position :fixed;
+    top: 0;
+    z-index: 10;
+  }
+
+  .logo { /*ヘッダーのロゴのサイズ設定*/
+    width: 140px;
+    margin-top: 5px;
+  }
+
+  .header-left { /*ヘッダーのロゴを左寄せにする*/
+    float: left;
+  }
+
+  .header-right { /*ログインなどのボタンは右寄せにする*/
+    float: right;
+    margin-right: -25px;
+    font-size:18px;
+    display: block;
+  }
+
+  .header-right a { /*ヘッダーの右のボタンの設定*/
+    line-height: 65px;
+    padding: 0 25px;
+    color: #d6b845;
+    display: block;
+    float: left;
+    transition: all 0.5s;
+  }
+
+  .header-right a:hover { /*ヘッダーの右のボタンへマウスカーソルを移動させたときの処理*/
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  .header-btn{
+    font-size: 24px;
+}
+  /* menu-iconのCSS */
+  .menu-icon {
+    display:none;
+  }
+
+  .heading { /*アップロード，変換後の説明文*/
+    padding-top: 80px;
+    padding-bottom: 50px;
+    color: #5f5d60;
+  }
+
+  .heading h2 { /*文字の太さを通常サイズにする*/
+    font-weight: normal;
+  }
+
+  .heading h3 { /*文字の太さを通常サイズにする*/
+    font-weight: normal;
+  }
+
+  .second-wrapper { /*upload, change部の処理*/
+    margin-top: 100px;
+    padding-bottom: 50px;
+  }
+
+  footer img { /*フッターの画像サイズ*/
+    width: 120px;
+  }
+
+  footer p {/*フッターの文字*/
+    color: rgba(20, 20, 20,0.7);
+    font-size: 12px;
+  }
+
+  footer {/*フッター全体の設定*/
+    border-top: 1px solid rgb(100, 100, 100);
+    padding-top: 30px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+  }
+
+  .footer-logo {/*フッターの画像と文字の設定*/
+    max-width: 1500px;
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+    text-align: right;
+  }
+
+  .upload, .change{
+    display: inline-block;
+  }
+
+  .upload-label, .change_images { /*uploadとchangeのボタンの設定*/
+    display: inline-block;
+    cursor: pointer; /* カーソルを指に */
+    margin: 0 0; /* まわりの余白 */
+    padding: .7em 1em; /* 文字まわりの余白 */
+    line-height: 1.4; /* 行間 */
+    background: rgba(20, 20, 20,0.7); /* 背景色 */
+    color: #d6b845; /* 文字色 */
+    border-radius: 7px; /* 角の丸み */
+    transition: 0.2s; /* ホバーをなめらかに */
+    font-size: 24px;
+  }
+  /* ホバー時 */
+  .upload-label:hover { /*uploadとchangeのボタン上にカーソルが来た時の処理*/
+    box-shadow: 0 8px 10px -2px rgba(0, 0, 0, 0.2); /* 影を表示 */
+  }
+  .change_images:hover {
+    box-shadow: 0 8px 10px -2px rgba(0, 0, 0, 0.2); /* 影を表示 */
+  }
+
+  /* inputは隠す */
+  .upload-label input {
+    display: none;
+  }
+  .change_images input {
+    display: none;
+  }
+
+  form h1{
+      margin-bottom: 0;
+  }
+
+.image_post{ /*画像変換後の表示の際の文字と画像を横一列に並べる*/
+    display: inline-block;
+}
+
+.img_uploads{
+  width:500px
+}
+
+.img_results{
+  width:500px
+}
+
+.before_after_text{
+  color: #d6b845;
+}
+
+.after{
+  position:relative;
+  top:0px;
+  left:210px;
+  display: inline-block;
+}
+
+.before{
+  position:relative;
+  top:0px;
+  right:250px;
+  display: inline-block;
+}
+
+.file_name {
+  position: relative;
+  margin: 1.5em 0;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 20px;
+  background: #FFF;
+  border: solid 2px #555;
+  border-radius: 7px;
+  box-sizing: border-box;
+}
+
+.file_name:before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  margin-left: -15px;
+  border: 12px solid transparent;
+  border-bottom: 12px solid #FFF;
+  z-index: 2;
+}
+
+.file_name:after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  margin-left: -17px;
+  border: 14px solid transparent;
+  border-bottom: 14px solid #555;
+  z-index: 1;
+}
+
+.file_name p {
+  margin: 0;
+  padding: 0;
+}
+
+.title{
+  color: #b32425;
+}
+
+.download{
+  color: rgba(20, 20, 20, 0.7);
+  margin-left: 250px;
+  font-size: 24px;
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 200px;
+  visibility: hidden;
+}
+.image_text {
+  font-size: 24px;
+  color: rgba(20, 20, 20, 0.7);
+  margin-right: 100px;
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 200px;
+}
+.dl_text{
+  font-size: 24px;
+  color: rgba(20, 20, 20, 0.7);
+  margin-left: 100px;
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 200px;
+}
+
+.drawer{
+  display: none;
+}
+
+.top-wrapper h2{
+  opacity: 0.7;
+  padding:200px auto;
+  text-align: center;
+}
+
+.third-wrapper a{
+  text-align:center;
+}
+
+.progress{
+  font-size: 24px;
+  width:100%;
+  text-align: center;
+  color:rgba(20, 20, 20, 0.8);
+}
+
+.fa-paw{
+  font-size: 36px;
+  color: #d6b845;
+  margin-right: 10px;
+}
+
+.right_icon{
+  display: inline-block;
+  font-size:42px;
+  color: #d6b845;
+  margin: 0px 10px;
+}
+
+.down_icon{
+  display: none;
+}
+
+.bottom{
+  padding-bottom: 50px;
+  padding-top:20px;
+  font-size: 20px;
+}

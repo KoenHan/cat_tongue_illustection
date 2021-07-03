@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Tongue</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <!-- CSS only -->
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">-->
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <div class="top-wrapper">
+      <div class="container">
+        <h2>申し訳ありません．ただいまアクセスが集中しております．</h2>
+        <h2>Sorry...The web server is not returning a connection.</h2>
+      </div>
+    </div>
+
+    <div class="third-wrapper">
+      <div class="container">
+        <div class="progress">
+            <p> 1 分経過後に自動でトップ画面に戻ります．</p>
+            <p>画面下部の「トップ画面に戻る」リンクを押した場合にも，戻ることができます．</p>
+            <script>
+                var start = new Date();
+
+                // 初期化
+                var hour = 0;
+                var min = 0;
+                var sec = 0;
+                var now = 0;
+                var datet = 0;
+
+                function disp(){
+
+                    now = new Date();
+
+                    datet = parseInt((now - start) / 1000);
+
+                    sec = datet % 61;
+                    if (sec >= 60) {
+                      window.location.href = '/'
+                    }
+                    p = parseInt(100 * sec / 60)
+
+                    // 数値が1桁の場合、頭に0を付けて2桁で表示する指定
+                    if(sec < 10) { sec = "0" + sec; }
+                    if(p < 10) { p = "0" + p; }
+
+                    // フォーマットを指定
+
+                    // テキストフィールドにデータを渡す処理
+                    const percent = document.getElementById("percent");
+                    percent.textContent = p + " %";
+
+                    const progressbar = document.getElementById("p1");
+                    progressbar.value = sec;
+                }
+                setInterval(disp, 500);
+
+            </script>
+
+            <progress id="p1" min="0" max="59" value="0"></progress>
+            <span id="percent">0%</span>
+            <script>
+                function proc1()
+                {
+                    if (document.getElementById('p1').value < 100 ) {
+                        document.getElementById('p1').value++;
+                        setTimeout(proc1, 600);
+                    }
+                }
+            </script>
+        </div>
+
+        <a class = "bottom" href="{{ url_for('up_get') }}">トップに戻る</a>
+      </div>
+    </div>
+  </body>
+</html>
